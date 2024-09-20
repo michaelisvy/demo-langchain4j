@@ -1,11 +1,16 @@
 package com.spring.book;
 
+import dev.langchain4j.chain.ConversationalChain;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
+import dev.langchain4j.memory.ChatMemory;
+import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.output.Response;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 class BookRecommendationService {
@@ -36,5 +41,19 @@ class BookRecommendationService {
 
         Response<AiMessage> response = chatLanguageModel.generate(systemMessage, userMessage);
         return response.content().text();
+    }
+
+    public List<String> findBookWithConversationChain() {
+
+        ChatMemory chatMemory = MessageWindowChatMemory.withMaxMessages(20);
+        ConversationalChain chain = ConversationalChain.builder()
+                .chatLanguageModel(chatLanguageModel)
+                .chatMemory(chatMemory)
+                .build();
+
+        var firstResponse = chain.execute("Who painted the Mona Lisa?");
+        var secondResponse = chain.execute("Where can you see this painting?");
+
+        return List.of(firstResponse, secondResponse);
     }
 }

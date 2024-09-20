@@ -28,4 +28,15 @@ class BookRecommendationServiceTest {
         logger.info(response);
         assertThat(response).isNotEmpty();
     }
+
+    @Test
+    void shouldFindBookWithConversationChain() {
+        var responseList = this.ragSampleService.findBookWithConversationChain();
+
+        for (String response : responseList) {
+            logger.info("here is a response: {}", response);
+        }
+
+        assertThat(responseList).isNotEmpty();
+    }
 }
