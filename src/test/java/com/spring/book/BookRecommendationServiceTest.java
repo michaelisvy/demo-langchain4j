@@ -11,20 +11,20 @@ import static org.assertj.core.api.Assertions.*;
 @SpringBootTest
 class BookRecommendationServiceTest {
     @Autowired
-    private BookRecommendationService bookRecommendationService;
+    private BookRecommendationService ragSampleService;
 
     private static final Logger logger = LoggerFactory.getLogger(BookRecommendationServiceTest.class);
 
     @Test
     void shouldFindMostPopularProgrammingBooks() {
-        var response = this.bookRecommendationService.findMostPopularProgrammingBooks();
+        var response = this.ragSampleService.findMostPopularProgrammingBooks();
         logger.info(response);
         assertThat(response).isNotEmpty();
     }
 
     @Test
     void shouldFindBookWithSystemPromptAndParam() {
-        var response = this.bookRecommendationService.findBookWithSystemPromptAndParam();
+        var response = this.ragSampleService.findBookWithSystemPromptAndParam();
         logger.info(response);
         assertThat(response).isNotEmpty();
     }

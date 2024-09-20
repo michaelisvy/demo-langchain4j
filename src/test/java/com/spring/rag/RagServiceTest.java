@@ -9,15 +9,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
-class BookReaderServiceTest {
+class RagServiceTest {
     @Autowired
-    private BookReaderService bookReaderService;
+    private RagService ragService;
 
-    private static final Logger logger = LoggerFactory.getLogger(BookReaderServiceTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(RagServiceTest.class);
 
     @Test
-    void shouldAskQuestion() {
-        var response = this.bookReaderService.askQuestion();
+    void shouldSearchForFruits() {
+        var response = this.ragService.searchForFruits();
         logger.info(response);
         assertThat(response).isNotEmpty();
     }
