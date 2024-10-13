@@ -1,4 +1,4 @@
-package com.spring.weather;
+package com.spring.image;
 
 import dev.langchain4j.data.message.ImageContent;
 import dev.langchain4j.data.message.TextContent;
@@ -9,30 +9,25 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Base64;
 
 @Service
-class WeatherService {
+class ImageService {
 
     private final ChatLanguageModel chatLanguageModel;
 
     @Value("classpath:weather/singapore-weather.png")
     private Resource singaporeWeather;
 
-    public WeatherService(ChatLanguageModel chatLanguageModel) {
+    public ImageService(ChatLanguageModel chatLanguageModel) {
         this.chatLanguageModel = chatLanguageModel;
     }
 
-    public String analyseWeather() throws IOException {
-        Path imagePath = Path.of("/Users/michaelisvy2/code/Training/spring-ai-playground/spring-ai-samples2/src/main/resources/weather/singapore-weather.png");
-        byte[] imageBytes = Files.readAllBytes(imagePath);
-        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-
+    public String processImage() throws IOException {
+        //My original intent was to load an image from inside the src/main/resources folder. I didn't manage to make it work
+        String imageUrl = "https://images.pexels.com/photos/18936020/pexels-photo-18936020/free-photo-of-street-vendor-in-apron-putting-freshly-baked-egg-bread-on-metal-trays.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
         UserMessage userMessage = UserMessage.from(
                 TextContent.from("What do you see?"),
-                ImageContent.from(base64Image)
+                ImageContent.from(imageUrl)
         );
         return this.chatLanguageModel.generate(userMessage).toString();
     }

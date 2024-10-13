@@ -1,4 +1,4 @@
-package com.spring.weather;
+package com.spring.image;
 
 import org.assertj.core.api.*;
 import org.junit.jupiter.api.Test;
@@ -7,19 +7,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.IOException;
-
 @SpringBootTest
-class WeatherServiceTest {
+class ImageServiceTest {
 
     @Autowired
-    private WeatherService weatherService;
+    private ImageService imageService;
 
-    private static final Logger logger = LoggerFactory.getLogger(WeatherServiceTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(ImageServiceTest.class);
 
     @Test
-    void shouldAnalyseWeather() throws IOException {
-        var weatherPrediction = this.weatherService.analyseWeather();
+    void shouldProcessImage() throws Exception {
+        var weatherPrediction = this.imageService.processImage();
         logger.info(weatherPrediction);
         Assertions.assertThat(weatherPrediction).isNotEmpty();
     }
