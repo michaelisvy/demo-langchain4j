@@ -8,15 +8,16 @@ import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.output.Response;
+import dev.langchain4j.service.AiServices;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-class BookRecommendationService {
+class BookService {
     private final ChatLanguageModel chatLanguageModel;
 
-    public BookRecommendationService(ChatLanguageModel chatLanguageModel) {
+    public BookService(ChatLanguageModel chatLanguageModel) {
         this.chatLanguageModel = chatLanguageModel;
     }
 
@@ -56,4 +57,25 @@ class BookRecommendationService {
 
         return List.of(firstResponse, secondResponse);
     }
+
+    public Book findBookEntity() {
+        BookExtractor bookExtractor = AiServices.create(BookExtractor.class, chatLanguageModel);
+        return bookExtractor.generate("What is the most populoar book in 2023?");
+    }
+
+      //doesn't seem to work yet
+//    public List<Book> findBookEntities() {
+//        BookExtractor bookExtractor = AiServices.create(BookExtractor.class, chatLanguageModel);
+//        return bookExtractor.generateAll("What is the most populoar book in 2023?");
+//    }
 }
+
+interface BookExtractor {
+
+    Book generate(String query);
+
+    //List<Book> generateAll(String query);
+    //doesn't seem to work yet
+}
+
+
