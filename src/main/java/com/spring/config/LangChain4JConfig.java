@@ -1,41 +1,38 @@
 package com.spring.config;
 
+import com.spring.book.AssistantWithMemory;
+import com.spring.tools.AssistantWithTools;
+import com.spring.tools.Tools;
 import dev.langchain4j.data.segment.TextSegment;
+import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatLanguageModel;
-import dev.langchain4j.model.embedding.EmbeddingModel;
-import dev.langchain4j.model.openai.OpenAiChatModel;
-import dev.langchain4j.model.openai.OpenAiEmbeddingModel;
+import dev.langchain4j.service.AiServices;
 import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 class LangChain4JConfig {
 
-    @Value("${OPENAI_API_KEY}")
-    private String openAiKey;
-
     @Bean
-    ChatLanguageModel azureOpenAIChatLanguageModel() {
-        return OpenAiChatModel.builder()
-                .apiKey(openAiKey)
-                .modelName("gpt-4o")
-                .logRequests(true)
-                .logRequests(true)
+    AssistantWithMemory assistantWithMemory(ChatLanguageModel model) {
+        return AiServices.builder(AssistantWithMemory.class)
+                .chatLanguageModel(model)
+                .chatMemory(MessageWindowChatMemory.withMaxMessages(20))
                 .build();
     }
 
     @Bean
-    EmbeddingModel azureOpenAiEmbeddingModel() {
-        return OpenAiEmbeddingModel.builder()
-                .apiKey(openAiKey)
+    AssistantWithTools assistantWithTools(ChatLanguageModel model) {
+        return AiServices.builder(AssistantWithTools.class)
+                .chatLanguageModel(model)
+                .tools(new Tools())
                 .build();
     }
 
     @Bean
     EmbeddingStore<TextSegment> embeddingStore() {
-        return new InMemoryEmbeddingStore();
+        return new InMemoryEmbeddingStore<>();
     }
 }

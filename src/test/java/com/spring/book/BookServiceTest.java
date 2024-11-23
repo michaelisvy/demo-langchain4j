@@ -23,15 +23,15 @@ class BookServiceTest {
     }
 
     @Test
-    void shouldFindBookWithSystemPromptAndParam() {
-        var response = this.bookService.findBookWithSystemPromptAndParam();
+    void shouldAnswerWithSystemPromptAndParam() {
+        var response = this.bookService.answerWithSystemPromptAndParam();
         logger.info(response);
         assertThat(response).isNotEmpty();
     }
 
     @Test
-    void shouldFindBookWithConversationChain() {
-        var responseList = this.bookService.findBookWithConversationChain();
+    void shouldAnswerWithChatMemory() {
+        var responseList = this.bookService.answerWithChatMemory();
 
         for (String response : responseList) {
             logger.info("here is a response: {}", response);
@@ -49,15 +49,14 @@ class BookServiceTest {
         assertThat(response.author()).isNotNull();
     }
 
-    //doesn't seem to work yet
-    //    @Test
-//    void shouldFindManyBookEntities() {
-//        var bookList = this.bookService.findBookEntities();
-//
-//        for (Book book : bookList) {
-//            logger.info("here is a response: {}", book.name());
-//        }
-//
-//        assertThat(bookList).isNotEmpty();
-//    }
+    @Test
+    void shouldFindManyBookEntities() {
+        var bookList = this.bookService.findBookEntities();
+
+        for (Book book : bookList) {
+            logger.info("here is a response: {}", book.name());
+        }
+
+        assertThat(bookList).isNotEmpty();
+    }
 }

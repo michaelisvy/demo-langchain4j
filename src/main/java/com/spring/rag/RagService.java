@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 class RagService {
 
     private final EmbeddingModel embeddingModel;
-    private final EmbeddingStore embeddingStore;
+    private final EmbeddingStore<TextSegment> embeddingStore;
 
-    public RagService(EmbeddingModel embeddingModel, EmbeddingStore embeddingStore) {
+    public RagService(EmbeddingModel embeddingModel, EmbeddingStore<TextSegment> embeddingStore) {
         this.embeddingModel = embeddingModel;
         this.embeddingStore = embeddingStore;
     }
