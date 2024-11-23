@@ -1,4 +1,4 @@
-package com.spring.image;
+package com.spring.example_02_multimodal;
 
 import dev.langchain4j.data.message.ImageContent;
 import dev.langchain4j.data.message.TextContent;

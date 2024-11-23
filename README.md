@@ -10,7 +10,7 @@
 
 
 ## Use an Image as Input and ask questions about the image
-* See [ImageService](src/main/java/com/spring/image/ImageService.java) and [ImageServiceTest](src/test/java/com/spring/image/ImageServiceTest.java)
+* See [ImageService](src/main/java/com/spring/example_02_multimodal/ImageService.java) and [ImageServiceTest](src/test/java/com/spring/example_02_multimodal/ImageServiceTest.java)
 
 ## Using an in-memory Vector Database
 * See [RagService](src/main/java/com/spring/rag/RagService.java) and [RagServiceTest](src/test/java/com/spring/rag/RagServiceTest.java)

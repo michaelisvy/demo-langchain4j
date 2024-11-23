@@ -1,4 +1,4 @@
-package com.spring.image;
+package com.spring.example_02_multimodal;
 
 import org.assertj.core.api.*;
 import org.junit.jupiter.api.Test;
