@@ -1,29 +1,29 @@
 package com.spring.book;
 
-import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.chat.ChatModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 class BookService {
-    private final ChatLanguageModel chatLanguageModel;
+    private final ChatModel chatModel;
     private final BookExtractor bookExtractor;
     private final Alexa alexa;
     private final AssistantWithMemory assistantWithMemory;
 
-    public BookService(ChatLanguageModel chatLanguageModel,
+    public BookService(ChatModel chatModel,
                        BookExtractor bookExtractor,
                        Alexa alexa,
                        AssistantWithMemory assistantWithMemory) {
-        this.chatLanguageModel = chatLanguageModel;
+        this.chatModel = chatModel;
         this.bookExtractor = bookExtractor;
         this.alexa = alexa;
         this.assistantWithMemory = assistantWithMemory;
     }
 
     public String findMostPopularProgrammingBooks() {
-        return this.chatLanguageModel.generate("5 best programming books in year 2023");
+        return this.chatModel.chat("5 best programming books in year 2023");
     }
 
     public String answerWithSystemPromptAndParam() {

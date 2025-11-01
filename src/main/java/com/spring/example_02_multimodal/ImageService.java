@@ -3,7 +3,7 @@ package com.spring.example_02_multimodal;
 import dev.langchain4j.data.message.ImageContent;
 import dev.langchain4j.data.message.TextContent;
 import dev.langchain4j.data.message.UserMessage;
-import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.chat.request.ChatRequest;
 import dev.langchain4j.model.chat.response.ChatResponse;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,13 +16,13 @@ import java.util.Base64;
 @Service
 class ImageService {
 
-    private final ChatLanguageModel chatLanguageModel;
+    private final ChatModel chatModel;
 
     @Value("classpath:weather/singapore-weather.png")
     private Resource singaporeWeather;
 
-    public ImageService(ChatLanguageModel chatLanguageModel) {
-        this.chatLanguageModel = chatLanguageModel;
+    public ImageService(ChatModel chatModel) {
+        this.chatModel = chatModel;
     }
 
     public String processImage() throws IOException {
@@ -30,7 +30,7 @@ class ImageService {
                 TextContent.from("What is the weather like on Tuesday?"),
                 ImageContent.from(encodeInBase64(singaporeWeather), "image/jpg")
         );
-        ChatResponse chatResponse = chatLanguageModel.chat(ChatRequest.builder().messages(userMessage).build());
+        ChatResponse chatResponse = chatModel.chat(ChatRequest.builder().messages(userMessage).build());
         return chatResponse.aiMessage().text();
     }
 
