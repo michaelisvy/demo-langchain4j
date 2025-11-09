@@ -14,6 +14,9 @@
 ## ChatMemory usage
 * See [LangChain4JConfig](src/main/java/com/spring/config/LangChain4JConfig.java), [ChatMemoryService](src/main/java/com/spring/example_03_memory/ChatMemoryService.java) and [ChatMemoryServiceTest](src/test/java/com/spring/example_03_memory/ChatMemoryServiceTest.java)
 
+## RAG: read data from a PDF or Excel file
+* See [MusicService](src/main/java/com/spring/example_04_RAG/MusicService.java) and [MusicServiceTest](src/test/java/com/spring/example_04_RAG/MusicServiceTest.java)
+
 ## Using an in-memory Vector Database
 * See [RagService](src/main/java/com/spring/rag/RagService.java) and [RagServiceTest](src/test/java/com/spring/rag/RagServiceTest.java)
 
