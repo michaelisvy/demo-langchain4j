@@ -37,6 +37,4 @@ class ImageService {
     private String encodeInBase64(Resource resource) throws IOException {
         return Base64.getEncoder().encodeToString(resource.getContentAsByteArray());
     }
-
-
 }

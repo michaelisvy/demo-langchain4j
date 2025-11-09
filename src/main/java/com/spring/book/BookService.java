@@ -1,5 +1,6 @@
 package com.spring.book;
 
+import com.spring.example_03_chatMemory.PaintingExtractor;
 import dev.langchain4j.model.chat.ChatModel;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +11,12 @@ class BookService {
     private final ChatModel chatModel;
     private final BookExtractor bookExtractor;
     private final Alexa alexa;
-    private final AssistantWithMemory assistantWithMemory;
+    private final PaintingExtractor assistantWithMemory;
 
     public BookService(ChatModel chatModel,
                        BookExtractor bookExtractor,
                        Alexa alexa,
-                       AssistantWithMemory assistantWithMemory) {
+                       PaintingExtractor assistantWithMemory) {
         this.chatModel = chatModel;
         this.bookExtractor = bookExtractor;
         this.alexa = alexa;

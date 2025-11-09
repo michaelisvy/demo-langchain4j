@@ -1,6 +1,6 @@
 package com.spring.config;
 
-import com.spring.book.AssistantWithMemory;
+import com.spring.example_03_chatMemory.PaintingExtractor;
 import com.spring.tools.AssistantWithTools;
 import com.spring.tools.Tools;
 import dev.langchain4j.data.segment.TextSegment;
@@ -16,10 +16,10 @@ import org.springframework.context.annotation.Configuration;
 class LangChain4JConfig {
 
     @Bean
-    AssistantWithMemory assistantWithMemory(ChatModel model) {
-        return AiServices.builder(AssistantWithMemory.class)
+    PaintingExtractor paintingExtractor(ChatModel model) {
+        return AiServices.builder(PaintingExtractor.class)
                 .chatModel(model)
-                .chatMemory(MessageWindowChatMemory.withMaxMessages(20))
+                .chatMemoryProvider(memoryId -> MessageWindowChatMemory.withMaxMessages(20))
                 .build();
     }
 

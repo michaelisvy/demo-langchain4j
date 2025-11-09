@@ -5,11 +5,14 @@
 * The OpenAI cost for running this project with the default model should be a few cents at most. 
 * See [application.properties](src/main/resources/application.properties) for more details
 
-## Calls to the LLM (simple call, parameters, entities)
-* See [BookService](src/main/java/com/spring/book/BookService.java) and [BookServiceTest](src/test/java/com/spring/book/BookServiceTest.java)
+## Calls to the ChatModel (simple call, parameters, entities)
+* See [MovieService](src/main/java/com/spring/example_01_movie/MovieService.java)
 
 ## Use an Image as Input and ask questions about the image
 * See [ImageService](src/main/java/com/spring/example_02_multimodal/ImageService.java) and [ImageServiceTest](src/test/java/com/spring/example_02_multimodal/ImageServiceTest.java)
+
+## ChatMemory usage
+* See [LangChain4JConfig](src/main/java/com/spring/config/LangChain4JConfig.java), [ChatMemoryService](src/main/java/com/spring/example_03_memory/ChatMemoryService.java) and [ChatMemoryServiceTest](src/test/java/com/spring/example_03_memory/ChatMemoryServiceTest.java)
 
 ## Using an in-memory Vector Database
 * See [RagService](src/main/java/com/spring/rag/RagService.java) and [RagServiceTest](src/test/java/com/spring/rag/RagServiceTest.java)
