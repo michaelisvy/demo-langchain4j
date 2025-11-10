@@ -41,14 +41,14 @@ class MusicService {
     }
 
     public String findAlbumsFromArtist() {
-        var text = loadDocumentText();
-        logger.info(text);
+        var contextFileText = loadDocumentText();
+        logger.info(contextFileText);
         
         String prompt = String.format("""
                 Use the following pieces of context to answer the question at the end.
                 %s
                 Question: Which are the albums from Foo Fighters?
-                """, text);
+                """, contextFileText);
         
         return this.chatModel.chat(prompt);
     }
