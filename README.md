@@ -21,5 +21,5 @@
 * See [BookService](src/main/java/com/spring/example_05_vector/BookService.java) and [BookVectorStoreConfig](src/main/java/com/spring/example_05_vector/BookVectorStoreConfig.java)
 
 ## Using tools (function calling)
-* See [Tools](src/main/java/com/spring/tools/Tools.java), [AssistantWithTools](src/main/java/com/spring/tools/AssistantWithTools.java)
-and [AssistantWithToolsTest](src/test/java/com/spring/tools/AssistantWithToolsTest.java)
+* See [Tools](src/main/java/com/spring/example_06_tools/Tools.java), [AssistantWithTools](src/main/java/com/spring/example_06_tools/AssistantWithTools.java)
+and [AssistantWithToolsTest](src/test/java/com/spring/example_06_tools/AssistantWithToolsTest.java)

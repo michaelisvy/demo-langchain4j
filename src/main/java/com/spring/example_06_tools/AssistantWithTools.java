@@ -1,4 +1,4 @@
-package com.spring.tools;
+package com.spring.example_06_tools;
 
 public interface AssistantWithTools {
 

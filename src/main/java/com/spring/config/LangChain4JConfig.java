@@ -1,8 +1,8 @@
 package com.spring.config;
 
 import com.spring.example_03_chatMemory.PaintingExtractor;
-import com.spring.tools.AssistantWithTools;
-import com.spring.tools.Tools;
+import com.spring.example_06_tools.AssistantWithTools;
+import com.spring.example_06_tools.Tools;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.service.AiServices;

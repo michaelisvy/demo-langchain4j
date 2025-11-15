@@ -1,4 +1,4 @@
-package com.spring.tools;
+package com.spring.example_06_tools;
 
 import dev.langchain4j.agent.tool.Tool;
 import org.springframework.stereotype.Component;
