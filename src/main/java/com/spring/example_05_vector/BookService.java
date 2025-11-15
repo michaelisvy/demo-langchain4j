@@ -5,7 +5,6 @@ import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.store.embedding.EmbeddingSearchRequest;
-import dev.langchain4j.store.embedding.EmbeddingSearchResult;
 import dev.langchain4j.store.embedding.EmbeddingStore;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +27,7 @@ class BookService {
     public String answerQuestion(String question) {
         // Create embedding for the question
         Embedding questionEmbedding = embeddingModel.embed(question).content();
-        
+
         // Search for relevant context from the vector store
         EmbeddingSearchRequest searchRequest = EmbeddingSearchRequest.builder()
                 .queryEmbedding(questionEmbedding)
@@ -36,13 +35,12 @@ class BookService {
                 .minScore(0.7)  // Only include results with similarity > 0.7
                 .build();
         
-        EmbeddingSearchResult<TextSegment> searchResult = embeddingStore.search(searchRequest);
-        
-        // Combine the relevant context
-        String context = searchResult.matches().stream()
+        // Get relevant context from the vector store
+        String context = embeddingStore.search(searchRequest).matches().stream()
                 .map(match -> match.embedded().text())
                 .collect(Collectors.joining("\n\n"));
-        
+
+
         // Build the prompt with context
         String prompt = String.format("""
                 Use the following pieces of context to answer the question at the end.
